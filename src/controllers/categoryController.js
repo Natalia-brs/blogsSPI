@@ -9,6 +9,12 @@ const catPost = async (req, res) => {
        return res.status(201).json(newCategory);
 };
 
+const getAllCategories = async (req, res) => {
+    const getCategories = await serviceController.getCategories();
+    res.status(200).json(getCategories);
+};
+
 module.exports = {
     catPost,
+    getAllCategories,
 };
