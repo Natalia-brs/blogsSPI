@@ -5,7 +5,7 @@ const {
   validateDisplayName, 
   validateEmail, 
   validatePass } = require('./middleware/createUserValidate');
-  const { validateToken } = require('./middleware/validToken')
+  const { validateToken } = require('./middleware/validToken');
 // ...
 
 const app = express();
