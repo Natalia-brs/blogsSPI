@@ -1,4 +1,6 @@
 const express = require('express');
+const { loginUser } = require('./controllers/UserController');
+const { validateFields } = require('./middleware/validateFields');
 
 // ...
 
@@ -11,6 +13,8 @@ app.get('/', (_request, response) => {
 
 app.use(express.json());
 
+app.post('/login', validateFields, loginUser);
+  
 // ...
 
 // É importante exportar a constante `app`,
