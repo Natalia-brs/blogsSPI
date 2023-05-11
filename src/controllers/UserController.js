@@ -29,7 +29,19 @@ const addUser = async (req, res) => {
    return res.status(201).json({ token });
 };
 
+const getUsers = async (_req, res) => {
+    const result = await userService.getUsers();
+    const listUsers = result.map((user) => ({
+        id: user.id,
+        displayName: user.displayName,
+        email: user.email,
+        image: user.image,
+    }));
+    return res.status(200).json(listUsers);
+};
+
 module.exports = {
     loginUser,
     addUser,
+    getUsers,
 };
