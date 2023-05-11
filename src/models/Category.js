@@ -4,6 +4,7 @@ const CategoryModel = (sequelize, DataTypes) => {
         id: {
             primaryKey: true,
             type: DataTypes.INTEGER,
+            autoIncrement: true,
         },
         name: {
             type: DataTypes.STRING,
@@ -11,7 +12,7 @@ const CategoryModel = (sequelize, DataTypes) => {
     }, {
         underscored: true,
         timestamps: false,
-        tableName: 'users'
+        tableName: 'categories'
     });
 
     return Category;
