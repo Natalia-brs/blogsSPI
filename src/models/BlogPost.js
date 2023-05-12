@@ -5,6 +5,7 @@ const blogPostModel = (sequelize, DataTypes) => {
         id: {
             type: DataTypes.INTEGER,
             primaryKey: true,
+            autoIncrement: true,
         },
         title: {
             type: DataTypes.STRING,
@@ -14,6 +15,13 @@ const blogPostModel = (sequelize, DataTypes) => {
         },
         userId: {
             type: DataTypes.INTEGER,
+            allowNull: false,
+            field: 'user_id',
+            references: {
+                model: 'users',
+                key: 'id',
+            },
+            foreignKey: true,
         },
         published: {
             type: DataTypes.DATE,

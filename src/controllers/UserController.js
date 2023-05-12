@@ -8,8 +8,8 @@ const loginUser = async (req, res) => {
     const payload = await userService.loginUser(email); 
     if (!payload || payload.password !== password) {
            return res.status(400).json({ message: 'Invalid fields' });
-    } 
-    const token = jwt.sign({ data: payload.email }, secret, {
+    }
+    const token = jwt.sign({ email: payload.email, userId: payload.id }, secret, {
         expiresIn: '7d',
         algorithm: 'HS256',
     });

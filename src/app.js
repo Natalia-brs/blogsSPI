@@ -6,7 +6,8 @@ const {
   validateEmail, 
   validatePass } = require('./middleware/createUserValidate');
   const { validateToken } = require('./middleware/validToken');
-  const { catPost, getAllCategories } = require('./controllers/categoryController');
+  const { catPost, getAllCategories, createPost } = require('./controllers/categoryController');
+  const { validatePostFields } = require('./middleware/validatePost');
 // ...
 
 const app = express();
@@ -21,6 +22,7 @@ app.use(express.json());
 app.post('/login', validateFields, loginUser);
 app.post('/user', validateDisplayName, validateEmail, validatePass, addUser);
 app.post('/categories', validateToken, catPost);
+app.post('/post', validateToken, validatePostFields, createPost);
 app.get('/user/:id', validateToken, getById);
 app.get('/user', validateToken, getUsers);
 app.get('/categories', validateToken, getAllCategories);
